@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Proyecto_Final_Polo_Tecnologico_Incluit.Models;
+using Proyecto_Final_Polo_Tecnologico_Incluit.Rules;
 using System.Diagnostics;
 
 namespace Proyecto_Final_Polo_Tecnologico_Incluit.Controllers
@@ -19,6 +20,20 @@ namespace Proyecto_Final_Polo_Tecnologico_Incluit.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult Suerte()
+        {
+            var rule = new PublicacionRule();
+            var post = rule.GetPublicacionRandom();   
+            return View(post);
+        }
+        public IActionResult AcercaDe()
+        {
+            return View();
+        }
+        public IActionResult Contacto()
         {
             return View();
         }
