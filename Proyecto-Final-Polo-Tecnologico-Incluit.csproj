@@ -7,4 +7,10 @@
     <RootNamespace>Proyecto_Final_Polo_Tecnologico_Incluit</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="runtime.native.System.Data.SqlClient.sni" Version="4.7.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
+  </ItemGroup>
+
 </Project>

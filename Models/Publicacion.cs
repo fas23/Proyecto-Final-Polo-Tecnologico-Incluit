@@ -9,5 +9,6 @@
         public DateTime Creacion { get; set; } = DateTime.Now;
         public string Imagen { get; set; } = string.Empty;
 
+
     }
 }
