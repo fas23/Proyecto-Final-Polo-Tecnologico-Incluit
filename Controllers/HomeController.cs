@@ -8,15 +8,19 @@ namespace Proyecto_Final_Polo_Tecnologico_Incluit.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var rule = new PublicacionRule(_configuration);
+            var rulePost = rule.GetPostHome();
+            return View(rulePost);
         }
 
         public IActionResult Privacy()
@@ -25,7 +29,7 @@ namespace Proyecto_Final_Polo_Tecnologico_Incluit.Controllers
         }
         public IActionResult Suerte()
         {
-            var rule = new PublicacionRule();
+            var rule = new PublicacionRule(_configuration);
             var post = rule.GetPublicacionRandom();   
             return View(post);
         }
