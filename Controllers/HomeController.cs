@@ -23,9 +23,13 @@ namespace Proyecto_Final_Polo_Tecnologico_Incluit.Controllers
             return View(rulePost);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Post(int id)
         {
-            return View();
+            var rule = new PublicacionRule(_configuration);
+            var post = rule.GetPostById(id);
+            if (post == null)
+                return NotFound();
+            return View(post);
         }
         public IActionResult Suerte()
         {

@@ -24,12 +24,26 @@ public class PublicacionRule
         using var connection = new SqlConnection(connectionString);
         {
             connection.Open();
-            var post = connection.Query<Publicacion>("select top 1 * from Publicacion ");
+            var post = connection.Query<Publicacion>("select top 1 * from Publicacion order by newId()");
 
             return post.First();
         }
 
         
+    }
+
+    public Publicacion GetPostById(int id)
+    {
+        var connectionString = _configuration.GetConnectionString("BlogDataBase");
+
+
+        using var connection = new SqlConnection(connectionString);
+        {
+            connection.Open();
+            var post = connection.QueryFirstOrDefault<Publicacion>("select * from Publicacion where Id = @id", new { id});
+
+            return post;
+        }
     }
 
     public List<Publicacion> GetPostHome()
