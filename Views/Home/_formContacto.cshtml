@@ -1,0 +1,30 @@
+﻿@model Contacto
+
+
+<div class="mb-3">
+    <label for="Nombre" class="form-label">Nombre</label>
+    <input asp-for="Nombre" type="text" class="form-control" id="Nombre" aria-describeddy="Nombre"/>
+    @Html.ValidationMessageFor(x => x.Nombre, "", new { @class="text-danger"})
+
+</div>
+
+<div class="mb-3">
+    <label for="Email" class="form-label">Correo Electronico</label>
+    <input asp-for="Email" type="text" class="form-control" id="Email" aria-describeddy="Email"/>
+    @Html.ValidationMessageFor(x => x.Email, "", new { @class="text-danger"})
+
+</div>
+
+<div class="mb-3">
+    <label for="Telefono" class="form-label">Teléfono de Contacto</label>
+    <input asp-for="Telefono" type="text" class="form-control" id="Telefono" aria-describeddy="Telefono"/>
+    @Html.ValidationMessageFor(x => x.Telefono, "", new { @class="text-danger"})
+
+</div>
+
+<div class="mb-3">
+    <label for="Mensaje" class="form-label">Mensaje</label>
+    <textarea asp-for="Mensaje" class="form-control" id="Mensaje" placeholder="Enter your message here..." style="height: 12rem" data-sb-validations="required"></textarea>
+    @Html.ValidationMessageFor(x => x.Mensaje, "", new { @class="text-danger"})
+
+</div>

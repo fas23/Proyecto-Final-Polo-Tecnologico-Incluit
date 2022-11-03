@@ -8,7 +8,7 @@ namespace Proyecto_Final_Polo_Tecnologico_Incluit.Rules;
 
 public class PublicacionRule
 {
-    private IConfiguration _configuration;
+    private readonly IConfiguration _configuration;
 
     public PublicacionRule(IConfiguration configuration)
     {

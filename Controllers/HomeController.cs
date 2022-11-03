@@ -46,6 +46,23 @@ namespace Proyecto_Final_Polo_Tecnologico_Incluit.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Contacto(Contacto contacto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Contacto", contacto);
+            }
+
+            var rule = new ContactoRule(_configuration);
+            var mensaje = @"<h1>Gracias por contactarnos</h1>
+                            <p>Hemos recibido tu correo correctamente</p>
+                            <p>A la brevedad nos pondremos en contacto</p>
+                            <hr/><p>Saludo</p><p>Polo MC</p>";
+            rule.SendEmail(contacto.Email, mensaje, "Mensaje recibido", "Polo Mina Clavero");
+            return View("Contacto");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
