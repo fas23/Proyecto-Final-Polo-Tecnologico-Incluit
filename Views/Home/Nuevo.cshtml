@@ -1,0 +1,24 @@
+﻿@model Publicacion
+@{
+    ViewData["Title"] = "Nuevo";
+    ViewData["TitleHeader"] = "Nuevo";
+    ViewData["Imagen"] = "/assets/img/post-bg.jpg";
+    ViewData["SubtitleHeader"] = "Nuevo";
+}
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+
+            <p>Complete el formulario para dar de alta un artículo</p>
+            <div class="my-5">
+                <form asp-action="Add">
+                    <partial name="_formPublicacion" model="@Model" />
+                    <button class="btn btn-primary text-uppercase" id="submitButton" type="submit" value="Nuevo">Agregar</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

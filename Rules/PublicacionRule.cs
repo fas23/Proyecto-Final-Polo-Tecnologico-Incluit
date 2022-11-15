@@ -61,4 +61,25 @@ public class PublicacionRule
 
 
     }
+
+    public void InsertPost(Publicacion data)
+    {
+        var connectionString = _configuration.GetConnectionString("BlogDataBase");
+
+
+        using var connection = new SqlConnection(connectionString);
+        {
+            connection.Open();
+            var queryInsert = "Insert into Publicacion(Titulo, Subtitulo, Creador, Cuerpo, Creacion, Imagen) Values(@titulo,@subtitulo, @creador, @cuerpo, @creacion, @imagen)";
+            var result = connection.Execute(queryInsert, new
+            {
+                titulo = data.Titulo,
+                subtitulo= data.Subtitulo,
+                creador = data.Creador,
+                cuerpo = data.Cuerpo,
+                creacion = data.Creacion,
+                imagen = data.Imagen
+            });
+        }
+    }
 }

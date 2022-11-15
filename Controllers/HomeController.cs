@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Proyecto_Final_Polo_Tecnologico_Incluit.Models;
 using Proyecto_Final_Polo_Tecnologico_Incluit.Rules;
 using System.Diagnostics;
@@ -30,6 +31,21 @@ namespace Proyecto_Final_Polo_Tecnologico_Incluit.Controllers
             if (post == null)
                 return NotFound();
             return View(post);
+        }
+
+        [Authorize]
+        public IActionResult Nuevo()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Add(Publicacion data)
+        {
+            var rule = new PublicacionRule(_configuration);
+            rule.InsertPost(data);
+            return RedirectToAction("Index");
         }
         public IActionResult Suerte()
         {
